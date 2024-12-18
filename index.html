@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +8,46 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <div class="displayBooks"></div>
 
-    <dialog open>
+    <dialog>
         <form action="">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required autofocus>
 
             <label for="author">Author</label>
-            <input type="text" id="author" name="author">
+            <input type="text" id="author" name="author" required>
 
             <label for="pages">Pages</label>
-            <input type="number" id="pages" name="pages" min="10" max="1000">
+            <input type="number" id="pages" name="pages" min="10" max="1000" required>
 
-            <label class="checkbox-label" for="status">
+            <fieldset>
                 <legend>Status</legend>
                 <div>
-                    <input type="checkbox" id="status" name="status" value="read">
-                    <span>Read</span>
+                    <input id="status1" name="bookstatus" type="radio" value="Read" required>
+                    <label for="status1" class="radio-label">Read</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="status" name="status" value="not-read">
-                    <span>Not read yet</span>
+                    <input id="status2" name="bookstatus" type="radio" value="Not read" checked>
+                    <label for="status2" class="radio-label">Not read yet</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="status" name="status" value="currently-reading">
-                    <span>Currently reading</span>
+                    <input id="status3" name="bookstatus" type="radio" value="Currently reading">
+                    <label for="status3" class="radio-label">Currently reading</label>
                 </div>
-            </label>
-
-            <button type="submit">Submit</button>
+            </fieldset>
+            <div class="buttons">
+                <button value="cancel" formmethod="dialog" formnovalidate>Cancel</button>
+                <button id="submit">Submit</button>
+            </div>
         </form>
     </dialog>
 
     <div class="newBook">
-        <button>+ Add Book</button>
+        <button class="add">+ Add Book</button>
     </div>
 </body>
+
 </html>
