@@ -32,3 +32,38 @@ body {
     border: none;
     border-radius: 10px; 
 }
+
+form {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    padding: 30px;
+    font-size: 16px;
+  
+    button[type='submit'] {
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    input[type='text'],
+    input[type='number'] {
+        height: 30px;
+        font-size: inherit;
+    }
+
+    .checkbox-label > * {
+        padding: 10px;
+    }
+
+    span {
+            font-size: 15px;
+        }
+}
+
+dialog {
+    width: 400px;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
