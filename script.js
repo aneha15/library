@@ -5,9 +5,10 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${status}`;
-    }
+    this.info = `${title} by ${author}, ${pages} pages, ${status}`;
+    // this.info = function() {
+    //     `${title} by ${author}, ${pages} pages, ${status}`;
+    // }
 };
 
 function addBookToLibrary() {
@@ -22,10 +23,9 @@ const displayBooks = document.querySelector('.displayBooks');
 
 const logBooks = (element) => {
    const display = document.createElement('div');
-   display.innerHTML = JSON.stringify(element);
-   console.log(display.innerHTML);
+   display.innerHTML = element.info;
+//    console.log(display.innerHTML);
    displayBooks.appendChild(display);
-    console.log(element);
 };
 
 function displaybooks() {

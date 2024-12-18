@@ -1,0 +1,16 @@
+body {
+    background-color: #fffbeb;
+}
+
+.displayBooks {
+    padding: 75px;
+    display: grid;
+    
+}
+
+.displayBooks > * {
+    padding: 10px;
+    gap: 20px;
+    background-color: #ecfeff;
+    border-bottom: 2px dashed #22d3ee;
+}
