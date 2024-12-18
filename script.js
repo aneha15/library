@@ -8,6 +8,10 @@ function Book(title, author, pages, status) {
     this.info = `${title} by ${author}, ${pages} pages, ${status}`;
 };
 
+Book.prototype.toggleStatus = function() {
+    this.status === 'Read' ? this.status = 'Not Read Yet' : this.status = 'Read';
+};
+
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status);
     myLibrary.push(book);
@@ -23,28 +27,40 @@ function displaybooks(title, author, pages, status) {
     addBookToLibrary(title, author, pages, status);
 
     const display = document.createElement('div');
+    const buttons = document.createElement('div')
     const removeButton = document.createElement('div');
-    display.style.cssText = "display: flex; align-items: center; justify-content: space-between; gap: 10px;";
+    const changeStatus = document.createElement('div');
+
+    display.style.cssText = "display: flex; justify-content: space-between; align-items: center;";
     removeButton.style.cssText = "padding: 10px; width: 60px; background-color: palegreen; font-size: 16px;";
     removeButton.textContent = "Remove";
-
+    changeStatus.style.cssText = "padding: 10px; width: 90px; background-color: pink; font-size: 16px;";
+    changeStatus.textContent = "Change Status";
+    buttons.style.cssText = "display: flex; gap: 10px; align-items: center;";
     const lastAdded = myLibrary.at(-1);
 
     display.innerHTML = lastAdded.info;
-    display.setAttribute('data' , myLibrary.length -1);
-    removeButton.setAttribute('data' , myLibrary.length -1);
+    display.setAttribute('data', myLibrary.length - 1);
+    removeButton.setAttribute('data', myLibrary.length - 1);
+    changeStatus.setAttribute('data', myLibrary.length - 1);
     displayBooks.appendChild(display);
-    display.appendChild(removeButton);
+    display.appendChild(buttons);
+    buttons.appendChild(removeButton);
+    buttons.appendChild(changeStatus);
 
     removeButton.onclick = () => {
         myLibrary.splice(removeButton.getAttribute('data'), 1);
-        removeButton.parentElement.remove();
+        removeButton.parentElement.parentElement.remove();
+    };
+
+    changeStatus.onclick = () => {
+        myLibrary[changeStatus.getAttribute('data')].toggleStatus();
         console.table(myLibrary);
     };
 };
 
-displaybooks('The Apothecary Diaries', 'Natsu Hyuga', '228', 'currently reading');
-displaybooks('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet');
+displaybooks('The Apothecary Diaries', 'Natsu Hyuga', '228', 'Read');
+displaybooks('The Hobbit', 'J.R.R. Tolkien', '295', 'Not read yet');
 
 addButton.addEventListener('click', () => {
     dialog.showModal();
@@ -65,7 +81,7 @@ submitButton.addEventListener('click', (event) => {
         dialog.close();
         displaybooks(title, author, pages, status);
     }
-    
+
 });
 
 
