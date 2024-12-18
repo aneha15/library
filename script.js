@@ -12,7 +12,26 @@ function Book(title, author, pages, status) {
 
 function addBookToLibrary() {
     const book = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet');
+    const book2 = new Book('The Apothecary Diaries', 'Natsu Hyuga', '228', 'currently reading');
     myLibrary.push(book);
+    myLibrary.push(book2);
 };
 
-addBookToLibrary();
+const displayBooks = document.querySelector('.displayBooks');
+
+
+const logBooks = (element) => {
+   const display = document.createElement('div');
+   display.innerHTML = JSON.stringify(element);
+   console.log(display.innerHTML);
+   displayBooks.appendChild(display);
+    console.log(element);
+};
+
+function displaybooks() {
+    addBookToLibrary();
+    myLibrary.forEach(logBooks);
+};
+
+displaybooks();
+
