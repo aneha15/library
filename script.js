@@ -11,10 +11,6 @@ function Book(title, author, pages, status) {
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status);
     myLibrary.push(book);
-    // const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet');
-    // const book2 = new Book('The Apothecary Diaries', 'Natsu Hyuga', '228', 'currently reading');
-    // myLibrary.push(book1);
-    // myLibrary.push(book2);
 };
 
 const displayBooks = document.querySelector('.displayBooks');
@@ -23,26 +19,37 @@ const dialog = document.querySelector('dialog');
 const addButton = document.querySelector('.add');
 const submitButton = document.querySelector('#submit');
 
-// const logBooks = (element) => {
-//     const display = document.createElement('div');
-//     display.innerHTML = element.info;
-//     displayBooks.appendChild(display);
-// };
-
-
-
 function displaybooks(title, author, pages, status) {
     addBookToLibrary(title, author, pages, status);
+
     const display = document.createElement('div');
-    const lastAdded = myLibrary.pop();
+    const removeButton = document.createElement('div');
+    display.style.cssText = "display: flex; align-items: center; justify-content: space-between; gap: 10px;";
+    removeButton.style.cssText = "padding: 10px; width: 60px; background-color: palegreen; font-size: 16px;";
+    removeButton.textContent = "Remove";
+
+    const lastAdded = myLibrary.at(-1);
+
     display.innerHTML = lastAdded.info;
+    display.setAttribute('data' , myLibrary.length -1);
+    removeButton.setAttribute('data' , myLibrary.length -1);
     displayBooks.appendChild(display);
-    // myLibrary.forEach(logBooks);
+    display.appendChild(removeButton);
+
+    removeButton.onclick = () => {
+        myLibrary.splice(removeButton.getAttribute('data'), 1);
+        removeButton.parentElement.remove();
+        console.table(myLibrary);
+    };
 };
+
+displaybooks('The Apothecary Diaries', 'Natsu Hyuga', '228', 'currently reading');
+displaybooks('The Hobbit', 'J.R.R. Tolkien', '295', 'not read yet');
 
 addButton.addEventListener('click', () => {
     dialog.showModal();
 });
+
 
 submitButton.addEventListener('click', (event) => {
     event.preventDefault();

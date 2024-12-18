@@ -7,7 +7,7 @@ body {
 
 .displayBooks {
     /* border: 1px solid orange; */
-    width: 50%;
+    width: 60%;
     padding: 75px;
     display: grid;
     grid-template-columns: 1fr;
@@ -39,27 +39,37 @@ form {
     gap: 20px;
     padding: 30px;
     font-size: 16px;
-  
-    button[type='submit'] {
-        font-size: 18px;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-    }
+}
 
-    input[type='text'],
-    input[type='number'] {
-        height: 30px;
-        font-size: inherit;
-    }
+input[type='text'],
+input[type='number'] {
+    height: 30px;
+    font-size: inherit;
+}
 
-    .checkbox-label > * {
-        padding: 10px;
+.status {
+    border: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 15px;
+    legend {
+        font-size: 16px;
     }
+}
 
-    span {
-            font-size: 15px;
-        }
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons > * {
+    font-size: 18px;
+    padding: 12px 26px;
+    border-radius: 6px;
+    border: none;
 }
 
 dialog {
