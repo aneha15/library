@@ -8,15 +8,11 @@ class Book {
     this.status = status;
     }
 
-    toggleStatus() {
+    get toggleStatus() {
         this.status = (this.status === 'Read') ? 'Not Read' : 'Read';
     }
 
 };
-
-// Book.prototype.toggleStatus = function () {
-//     this.status === 'Read' ? this.status = 'Not Read' : this.status = 'Read';
-// };
 
 function addBookToLibrary(title, author, pages, status) {
     const book = new Book(title, author, pages, status);
@@ -70,7 +66,7 @@ function displaybooks(title, author, pages, status) {
 
     bkstatus.onclick = () => {
         const index = bkstatus.getAttribute('data');
-        myLibrary[index].toggleStatus();
+        myLibrary[index].toggleStatus;
         bkstatus.textContent = `${myLibrary[index].status}`;
     };
 };
