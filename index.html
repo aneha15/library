@@ -1,50 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     </style>
     <script src="script.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="displayBooks"></div>
 
     <dialog>
-        <form action="">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" required autofocus>
+      <form action="get">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          minlength="5"
+          maxlength="150"
+          required
+          autofocus
+        />
 
-            <label for="author">Author</label>
-            <input type="text" id="author" name="author" required>
+        <label for="author">Author</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          minlength="5"
+          maxlength="100"
+          required
+        />
 
-            <label for="pages">Pages</label>
-            <input type="number" id="pages" name="pages" min="10" max="2000" required>
+        <label for="pages">Pages</label>
+        <input
+          type="number"
+          id="pages"
+          name="pages"
+          min="10"
+          max="2000"
+          required
+        />
 
-            <fieldset>
-                <legend>Status</legend>
-                <div>
-                    <input id="status1" name="bookstatus" type="radio" value="Read" required>
-                    <label for="status1" class="radio-label">Read</label>
-                </div>
-                <div>
-                    <input id="status2" name="bookstatus" type="radio" value="Not read" checked>
-                    <label for="status2" class="radio-label">Not Read</label>
-                </div>
-            </fieldset>
-            <div class="buttons">
-                <button value="cancel" formmethod="dialog" formnovalidate>Cancel</button>
-                <button id="submit">Submit</button>
-            </div>
-        </form>
+        <fieldset>
+          <legend>Status</legend>
+          <div>
+            <input id="status1" name="bookstatus" type="radio" value="Read" />
+            <label for="status1" class="radio-label">Read</label>
+          </div>
+          <div>
+            <input
+              id="status2"
+              name="bookstatus"
+              type="radio"
+              value="Not read"
+              checked
+            />
+            <label for="status2" class="radio-label">Not Read</label>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <button id="cancel">Cancel</button>
+          <button id="submit">Submit</button>
+        </div>
+      </form>
     </dialog>
 
     <div class="newBook">
-        <button class="add">+ Add Book</button>
+      <button class="add">+ Add Book</button>
     </div>
-</body>
+  </body>
+</html>
